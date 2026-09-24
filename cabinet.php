@@ -40,31 +40,31 @@ function statusBadge($status) {
         <button type="button" data-bs-target="#banquetSlider" data-bs-slide-to="2"></button>
         <button type="button" data-bs-target="#banquetSlider" data-bs-slide-to="3"></button>
     </div>
-    <div class="carousel-inner rounded">
+    <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://picsum.photos/id/1015/1200/400" class="d-block w-100" alt="Зал">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <img src="img/slide1.jpg" class="d-block w-100" alt="Шикарный зал">
+            <div class="carousel-caption d-none d-md-block">
                 <h5>Шикарный зал</h5>
                 <p>Идеально для больших торжеств</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://picsum.photos/id/1025/1200/400" class="d-block w-100" alt="Веранда">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <img src="img/slide2.jpg" class="d-block w-100" alt="Летняя веранда">
+            <div class="carousel-caption d-none d-md-block">
                 <h5>Летняя веранда</h5>
                 <p>Свежий воздух и приятная атмосфера</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://picsum.photos/id/1040/1200/400" class="d-block w-100" alt="Ресторан">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <img src="img/slide3.jpg" class="d-block w-100" alt="Уютный ресторан">
+            <div class="carousel-caption d-none d-md-block">
                 <h5>Уютный ресторан</h5>
                 <p>Изысканная кухня и обслуживание</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="https://picsum.photos/id/1043/1200/400" class="d-block w-100" alt="Закрытая веранда">
-            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+            <img src="img/slide4.jpg" class="d-block w-100" alt="Закрытая веранда">
+            <div class="carousel-caption d-none d-md-block">
                 <h5>Закрытая веранда</h5>
                 <p>Уют на первом месте</p>
             </div>

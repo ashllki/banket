@@ -78,10 +78,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="payment" class="form-label">Способ оплаты:</label>
                         <select class="form-select" name="payment_method" id="payment" required>
                             <option value="" disabled selected>-- Выберите способ --</option>
-                            <option value="Наличные" <?= (($_POST['payment_method'] ?? '') === 'Наличные') ? 'selected' : '' ?>>Наличные</option>
-                            <option value="Карта" <?= (($_POST['payment_method'] ?? '') === 'Карта') ? 'selected' : '' ?>>Банковская карта</option>
-                            <option value="Перевод" <?= (($_POST['payment_method'] ?? '') === 'Перевод') ? 'selected' : '' ?>>Безналичный перевод</option>
-                        </select>
+                            <option value="QR-код" <?= (($_POST['payment_method'] ?? '') === 'QR-код') ? 'selected' : '' ?>>Предоплата по QR-коду</option>
+                            <option value="Карта МИР" <?= (($_POST['payment_method'] ?? '') === 'Карта МИР') ? 'selected' : '' ?>>Оплата картой МИР</option>
+                            <option value="Постоплата" <?= (($_POST['payment_method'] ?? '') === 'Постоплата') ? 'selected' : '' ?>>Постоплата в офисе организации</option>
+                        </select>   
                     </div>
 
                     <button type="submit" class="btn btn-success w-100">Отправить заявку</button>

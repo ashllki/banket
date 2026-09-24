@@ -1,64 +1,331 @@
-/* Плавное появление карточек */
+/* ===== ПОДКЛЮЧАЕМ ШРИФТ OSWALD ===== */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+/* ===== ЦВЕТОВАЯ ПАЛИТРА (из руководства по стилю) ===== */
+:root {
+    --gold: #DAA520;            /* Золотой */
+    --pink-gold: #FFDAB9;       /* Розово-золотистый */
+    --cream: #FFFDD0;           /* Кремовый */
+    --red: #DC143C;             /* Насыщенно-красный */
+    --dark-green: #006400;      /* Темно-зеленый */
+}
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    background-color: var(--cream);
+    animation: fadeIn 0.6s ease;
+}
+
+/* Заголовки по ТЗ */
+h1, .h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    color: var(--red);
+    font-weight: 600;
+}
+
+h2, .h2, h3, .h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+}
+
+/* Вспомогательный текст */
+small, .text-muted, .form-text {
+    font-size: 12px;
+    color: var(--dark-green);
+}
+
+/* ===== КАРТОЧКИ И АНИМАЦИИ ===== */
 .card {
+    border: none;
+    border-radius: 12px;
+    background-color: #fff;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     animation: fadeIn 0.5s ease;
 }
 
 .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(218, 165, 32, 0.25) !important;
 }
 
+/* Плавное появление */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Плавные кнопки */
-.btn {
-    transition: all 0.2s ease;
-}
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-/* Плавное появление строк таблицы */
-tbody tr {
-    animation: fadeIn 0.4s ease;
-}
-
-/* Адаптив под мобилки */
-@media (max-width: 576px) {
-    .carousel-caption {
-        font-size: 0.85rem;
-    }
-    h3 {
-        font-size: 1.2rem;
-    }
-}
-/* Плавное появление алертов */
-.alert {
-    animation: slideDown 0.3s ease;
-}
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Строки таблицы при наведении */
-tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.05) !important;
+/* ===== НАВИГАЦИЯ ===== */
+.navbar {
+    background-color: var(--dark-green) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Мобильная адаптация */
+.navbar-brand {
+    color: var(--gold) !important;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.navbar .text-white {
+    color: var(--pink-gold) !important;
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--red);
+    border-color: var(--red);
+}
+.btn-primary:hover {
+    background-color: #b8102f;
+    border-color: #b8102f;
+}
+
+.btn-success {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+.btn-success:hover {
+    background-color: #004d00;
+    border-color: #004d00;
+}
+
+.btn-warning {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+}
+.btn-warning:hover {
+    background-color: #c4941c;
+    color: #fff;
+}
+
+/* ===== ФОРМЫ ===== */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid var(--pink-gold);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(218, 165, 32, 0.25);
+}
+
+.form-label {
+    color: var(--dark-green);
+    font-weight: 500;
+}
+
+/* ===== ТАБЛИЦЫ ===== */
+.table-dark {
+    background-color: var(--dark-green) !important;
+}
+
+.table-dark th {
+    color: var(--pink-gold);
+    font-weight: 500;
+}
+
+tbody tr {
+    animation: fadeIn 0.4s ease;
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 218, 185, 0.3) !important;
+}
+
+/* ===== БЕЙДЖИ СТАТУСОВ ===== */
+.badge {
+    font-family: 'Oswald', sans-serif;
+    padding: 6px 12px;
+    font-weight: 500;
+}
+
+.badge.bg-warning {
+    background-color: var(--gold) !important;
+    color: #fff !important;
+}
+.badge.bg-info {
+    background-color: var(--pink-gold) !important;
+    color: var(--dark-green) !important;
+}
+.badge.bg-success {
+    background-color: var(--dark-green) !important;
+}
+.badge.bg-secondary {
+    background-color: #999 !important;
+}
+
+/* ===== АЛЕРТЫ ===== */
+.alert {
+    border-radius: 8px;
+    border: none;
+    animation: slideDown 0.3s ease;
+}
+
+/* ===== КАРУСЕЛЬ ===== */
+.carousel {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 100, 0, 0.2);
+}
+
+.carousel-item img {
+    height: 450px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 100, 0, 0.65) !important;
+    border-radius: 10px;
+    padding: 15px 25px;
+    backdrop-filter: blur(3px);
+}
+
+.carousel-caption h5 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.carousel-caption p {
+    color: var(--pink-gold);
+    margin-bottom: 0;
+}
+
+/* ===== ПОДВАЛ (footer) ===== */
+.site-footer {
+    background-color: var(--dark-green);
+    color: var(--cream);
+    margin-top: 60px;
+    padding: 30px 0 15px;
+    font-size: 14px;
+}
+
+.site-footer h5 {
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.site-footer a {
+    color: var(--pink-gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: var(--gold);
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 8px;
+}
+
+.site-footer .copyright {
+    border-top: 1px solid rgba(255, 218, 185, 0.3);
+    padding-top: 15px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--pink-gold);
+}
+
+/* ===== МОДАЛЬНЫЕ ОКНА ===== */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    background-color: var(--dark-green);
+    color: var(--pink-gold);
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+/* ===== ПАГИНАЦИЯ ===== */
+.pagination .page-link {
+    color: var(--dark-green);
+    border-radius: 6px;
+    margin: 0 2px;
+    transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--pink-gold);
+    color: var(--dark-green);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+}
+
+/* ===== АДАПТИВ ПОД МОБИЛКИ ===== */
 @media (max-width: 768px) {
+    h1, .h1 { font-size: 26px; }
+    h2, .h2, h3, .h3 { font-size: 20px; }
+    body { font-size: 14px; }
+
+    .carousel-item img {
+        height: 220px;
+    }
+    .carousel-caption {
+        padding: 8px 12px;
+    }
+    .carousel-caption h5 {
+        font-size: 16px;
+    }
+    .carousel-caption p {
+        font-size: 12px;
+    }
+
     .table-responsive {
         font-size: 0.85rem;
     }
-    .navbar-brand {
-        font-size: 1rem;
-    }
-    h3 {
-        font-size: 1.3rem;
+
+    .site-footer {
+        text-align: center;
     }
 }
