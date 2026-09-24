@@ -2,7 +2,7 @@
 // Подключаем базу данных
 require_once 'config/db.php';
 
-// Начинаем сессию (нужна для сохранения данных пользователя)
+// Начинаем сессию
 session_start();
 
 // Если пользователь уже вошел, перенаправляем в кабинет
@@ -11,11 +11,10 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-$errors = []; // Массив для ошибок
+$errors = [];
 
 // Проверяем, была ли отправлена форма
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Получаем данные из формы и убираем лишние пробелы
     $login = trim($_POST['login'] ?? '');
     $password = $_POST['password'] ?? '';
     $fio = trim($_POST['fio'] ?? '');
@@ -43,21 +42,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['password'] = 'Пароль должен содержать минимум 8 символов.';
     }
 
-    // 3. ФИО, телефон, email — обязательные
+    // 3. Обязательные поля
     if (empty($fio)) $errors['fio'] = 'Введите ФИО.';
     if (empty($phone)) $errors['phone'] = 'Введите телефон.';
-    if (empty($email)) $errors['email'] = 'Введите email.';
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (empty($email)) {
+        $errors['email'] = 'Введите email.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = 'Некорректный email.';
     }
 
     // --- ЕСЛИ ОШИБОК НЕТ, ДОБАВЛЯЕМ В БАЗУ ---
     if (empty($errors)) {
-        // Хешируем пароль (безопасность!)
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
+        // Пароль сохраняем как есть (без хеша — упрощённый вариант)
         $stmt = $pdo->prepare("INSERT INTO users (login, password, fio, phone, email, role) VALUES (?, ?, ?, ?, ?, 'user')");
-        $stmt->execute([$login, $hashedPassword, $fio, $phone, $email]);
+        $stmt->execute([$login, $password, $fio, $phone, $email]);
 
         // Перенаправляем на вход
         header('Location: login.php?registered=1');
@@ -84,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="card-body">
 
-                        <!-- Вывод общих ошибок -->
                         <?php if (!empty($errors)): ?>
                             <div class="alert alert-danger">
                                 Пожалуйста, исправьте ошибки ниже.

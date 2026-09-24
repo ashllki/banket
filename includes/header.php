@@ -16,8 +16,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             <a class="navbar-brand" href="cabinet.php">Банкетам.Нет</a>
             <div class="ms-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <span class="text-white me-3">Привет, <b><?= htmlspecialchars($_SESSION['user_fio']) ?></b>!</span>
-                    <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                    <span class="text-white me-3 d-none d-md-inline">Привет, <b><?= htmlspecialchars($_SESSION['user_fio']) ?></b>!</span>
+                    <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
                         <a href="admin.php" class="btn btn-warning btn-sm me-2">Админ-панель</a>
                     <?php endif; ?>
                     <a href="logout.php" class="btn btn-outline-light btn-sm">Выйти</a>
