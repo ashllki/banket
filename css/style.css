@@ -1,25 +1,42 @@
-/* ===== ПОДКЛЮЧАЕМ ШРИФТ OSWALD ===== */
+/* =========================================================
+   ПОДКЛЮЧАЕМ ШРИФТ OSWALD
+   ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
 
-/* ===== ЦВЕТОВАЯ ПАЛИТРА (из руководства по стилю) ===== */
+/* =========================================================
+   ЦВЕТОВАЯ ПАЛИТРА (из руководства по стилю)
+   ========================================================= */
 :root {
-    --gold: #DAA520;            /* Золотой */
-    --pink-gold: #FFDAB9;       /* Розово-золотистый */
-    --cream: #FFFDD0;           /* Кремовый */
-    --red: #DC143C;             /* Насыщенно-красный */
-    --dark-green: #006400;      /* Темно-зеленый */
+    --gold: #DAA520;
+    --pink-gold: #FFDAB9;
+    --cream: #FFFDD0;
+    --red: #DC143C;
+    --dark-green: #006400;
 }
 
-/* ===== БАЗОВЫЕ СТИЛИ ===== */
+/* =========================================================
+   БАЗОВЫЕ СТИЛИ
+   ========================================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
     color: #000000;
     background-color: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     animation: fadeIn 0.6s ease;
 }
 
-/* Заголовки по ТЗ */
+main, .container {
+    flex: 1;
+}
+
+/* Заголовки */
 h1, .h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 36px;
@@ -27,40 +44,33 @@ h1, .h1 {
     font-weight: 600;
 }
 
-h2, .h2, h3, .h3 {
+h2, .h2 {
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
     color: var(--gold);
     font-weight: 500;
 }
 
-h4, h5, h6 {
+h3, .h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     color: var(--gold);
+    font-weight: 500;
 }
 
-/* Вспомогательный текст */
+h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--gold);
+}
+
 small, .text-muted, .form-text {
     font-size: 12px;
     color: var(--dark-green);
 }
 
-/* ===== КАРТОЧКИ И АНИМАЦИИ ===== */
-.card {
-    border: none;
-    border-radius: 12px;
-    background-color: #fff;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    animation: fadeIn 0.5s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0.75rem 1.5rem rgba(218, 165, 32, 0.25) !important;
-}
-
-/* Плавное появление */
+/* =========================================================
+   АНИМАЦИИ
+   ========================================================= */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -71,7 +81,19 @@ small, .text-muted, .form-text {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== НАВИГАЦИЯ ===== */
+@keyframes authFadeUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   НАВИГАЦИЯ
+   ========================================================= */
 .navbar {
     background-color: var(--dark-green) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -88,7 +110,9 @@ small, .text-muted, .form-text {
     color: var(--pink-gold) !important;
 }
 
-/* ===== КНОПКИ ===== */
+/* =========================================================
+   КНОПКИ
+   ========================================================= */
 .btn {
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
@@ -105,7 +129,8 @@ small, .text-muted, .form-text {
     background-color: var(--red);
     border-color: var(--red);
 }
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: #b8102f;
     border-color: #b8102f;
 }
@@ -114,7 +139,8 @@ small, .text-muted, .form-text {
     background-color: var(--dark-green);
     border-color: var(--dark-green);
 }
-.btn-success:hover {
+.btn-success:hover,
+.btn-success:focus {
     background-color: #004d00;
     border-color: #004d00;
 }
@@ -127,12 +153,56 @@ small, .text-muted, .form-text {
 .btn-warning:hover {
     background-color: #c4941c;
     color: #fff;
+    border-color: #c4941c;
 }
 
-/* ===== ФОРМЫ ===== */
+.btn-outline-light {
+    color: var(--pink-gold);
+    border-color: var(--pink-gold);
+}
+.btn-outline-light:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+}
+
+.btn-outline-secondary {
+    color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+    color: #fff;
+}
+
+/* =========================================================
+   КАРТОЧКИ
+   ========================================================= */
+.card {
+    border: none;
+    border-radius: 12px;
+    background-color: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeIn 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(218, 165, 32, 0.25) !important;
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* =========================================================
+   ФОРМЫ (общие)
+   ========================================================= */
 .form-control, .form-select {
     border-radius: 8px;
     border: 1px solid var(--pink-gold);
+    padding: 10px 14px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -146,7 +216,9 @@ small, .text-muted, .form-text {
     font-weight: 500;
 }
 
-/* ===== ТАБЛИЦЫ ===== */
+/* =========================================================
+   ТАБЛИЦЫ
+   ========================================================= */
 .table-dark {
     background-color: var(--dark-green) !important;
 }
@@ -154,6 +226,7 @@ small, .text-muted, .form-text {
 .table-dark th {
     color: var(--pink-gold);
     font-weight: 500;
+    border-color: #004d00;
 }
 
 tbody tr {
@@ -165,11 +238,15 @@ tbody tr:hover {
     background-color: rgba(255, 218, 185, 0.3) !important;
 }
 
-/* ===== БЕЙДЖИ СТАТУСОВ ===== */
+/* =========================================================
+   БЕЙДЖИ СТАТУСОВ
+   ========================================================= */
 .badge {
     font-family: 'Oswald', sans-serif;
     padding: 6px 12px;
     font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.5px;
 }
 
 .badge.bg-warning {
@@ -187,14 +264,36 @@ tbody tr:hover {
     background-color: #999 !important;
 }
 
-/* ===== АЛЕРТЫ ===== */
+/* =========================================================
+   АЛЕРТЫ
+   ========================================================= */
 .alert {
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
     animation: slideDown 0.3s ease;
 }
 
-/* ===== КАРУСЕЛЬ ===== */
+.alert-danger {
+    background-color: #fde8ec;
+    color: var(--red);
+    border-left: 4px solid var(--red);
+}
+
+.alert-success {
+    background-color: #e6f4ea;
+    color: var(--dark-green);
+    border-left: 4px solid var(--dark-green);
+}
+
+.alert-info {
+    background-color: #fff5e1;
+    color: var(--gold);
+    border-left: 4px solid var(--gold);
+}
+
+/* =========================================================
+   КАРУСЕЛЬ (СЛАЙДЕР)
+   ========================================================= */
 .carousel {
     border-radius: 15px;
     overflow: hidden;
@@ -204,6 +303,11 @@ tbody tr:hover {
 .carousel-item img {
     height: 450px;
     object-fit: cover;
+    transition: transform 6s ease;
+}
+
+.carousel-item.active img {
+    transform: scale(1.05);
 }
 
 .carousel-caption {
@@ -224,12 +328,64 @@ tbody tr:hover {
     margin-bottom: 0;
 }
 
-/* ===== ПОДВАЛ (footer) ===== */
+/* =========================================================
+   ПАГИНАЦИЯ
+   ========================================================= */
+.pagination .page-link {
+    color: var(--dark-green);
+    border-radius: 6px;
+    margin: 0 2px;
+    border: 1px solid var(--pink-gold);
+    transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--pink-gold);
+    color: var(--dark-green);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #bbb;
+    border-color: #eee;
+}
+
+/* =========================================================
+   МОДАЛЬНЫЕ ОКНА
+   ========================================================= */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--dark-green);
+    color: var(--pink-gold);
+    border: none;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+.modal-title {
+    color: var(--gold);
+}
+
+/* =========================================================
+   ПОДВАЛ (footer)
+   ========================================================= */
 .site-footer {
     background-color: var(--dark-green);
     color: var(--cream);
     margin-top: 60px;
-    padding: 30px 0 15px;
+    padding: 40px 0 15px;
     font-size: 14px;
 }
 
@@ -237,6 +393,13 @@ tbody tr:hover {
     color: var(--gold);
     font-size: 18px;
     margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.site-footer p {
+    color: var(--cream);
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
 
 .site-footer a {
@@ -265,47 +428,220 @@ tbody tr:hover {
     text-align: center;
     font-size: 12px;
     color: var(--pink-gold);
+    letter-spacing: 1px;
 }
 
-/* ===== МОДАЛЬНЫЕ ОКНА ===== */
-.modal-content {
-    border-radius: 12px;
-    border: none;
+/* =========================================================
+   СТРАНИЦЫ ВХОДА И РЕГИСТРАЦИИ (auth-page)
+   ========================================================= */
+body.auth-page {
+    background: linear-gradient(135deg, #006400 0%, #004d00 50%, #DAA520 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.modal-header {
-    background-color: var(--dark-green);
+body.auth-page .auth-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+/* Карточка */
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--cream);
+    border-radius: 18px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(218, 165, 32, 0.3);
+    overflow: hidden;
+    animation: authFadeUp 0.6s ease;
+}
+
+/* Шапка карточки */
+.auth-card__header {
+    background: linear-gradient(135deg, #006400 0%, #004d00 100%);
+    color: var(--gold);
+    text-align: center;
+    padding: 30px 20px 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card__header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(218, 165, 32, 0.15) 0%, transparent 70%);
+    animation: shimmer 8s linear infinite;
+}
+
+.auth-card__header h1,
+.auth-card__header h4 {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+}
+
+.auth-card__header .auth-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-card__header p {
+    margin: 6px 0 0;
+    font-size: 12px;
     color: var(--pink-gold);
-    border-radius: 12px 12px 0 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
 }
 
-.modal-header .btn-close {
-    filter: invert(1);
+/* Тело карточки */
+.auth-card__body {
+    padding: 30px 35px 25px;
 }
 
-/* ===== ПАГИНАЦИЯ ===== */
-.pagination .page-link {
+.auth-card__body .form-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--dark-green);
-    border-radius: 6px;
-    margin: 0 2px;
-    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
 }
 
-.pagination .page-link:hover {
-    background-color: var(--pink-gold);
-    color: var(--dark-green);
+.auth-card__body .form-control {
+    background-color: #fff;
+    border: 2px solid var(--pink-gold);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 15px;
+    transition: all 0.25s ease;
 }
 
-.pagination .page-item.active .page-link {
-    background-color: var(--gold);
+.auth-card__body .form-control:focus {
     border-color: var(--gold);
-    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(218, 165, 32, 0.25);
 }
 
-/* ===== АДАПТИВ ПОД МОБИЛКИ ===== */
+.auth-card__body .form-control.is-invalid {
+    border-color: var(--red);
+    background-image: none;
+}
+
+.auth-card__body .invalid-feedback {
+    font-size: 12px;
+    color: var(--red);
+    font-weight: 500;
+}
+
+/* Кнопка в auth */
+.auth-btn {
+    width: 100%;
+    padding: 13px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-btn--login {
+    background: linear-gradient(135deg, #DC143C 0%, #b8102f 100%);
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+}
+
+.auth-btn--register {
+    background: linear-gradient(135deg, #006400 0%, #004d00 100%);
+    box-shadow: 0 4px 15px rgba(0, 100, 0, 0.4);
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+}
+
+.auth-btn--login:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.55);
+}
+
+.auth-btn--register:hover {
+    box-shadow: 0 8px 25px rgba(0, 100, 0, 0.55);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+/* Подвал карточки */
+.auth-card__footer {
+    text-align: center;
+    padding: 18px 20px;
+    background-color: rgba(0, 100, 0, 0.05);
+    border-top: 1px dashed rgba(218, 165, 32, 0.4);
+    font-size: 14px;
+    color: var(--dark-green);
+}
+
+.auth-card__footer a {
+    color: var(--red);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.auth-card__footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.auth-card__footer a:hover {
+    color: var(--gold);
+}
+
+.auth-card__footer a:hover::after {
+    width: 100%;
+}
+
+/* =========================================================
+   АДАПТИВ (мобильные устройства)
+   ========================================================= */
 @media (max-width: 768px) {
     h1, .h1 { font-size: 26px; }
-    h2, .h2, h3, .h3 { font-size: 20px; }
+    h2, .h2 { font-size: 20px; }
+    h3, .h3 { font-size: 16px; }
     body { font-size: 14px; }
 
     .carousel-item img {
@@ -328,4 +664,44 @@ tbody tr:hover {
     .site-footer {
         text-align: center;
     }
+
+    .site-footer h5 {
+        margin-top: 15px;
+    }
 }
+
+@media (max-width: 576px) {
+    .auth-card__header {
+        padding: 22px 15px 18px;
+    }
+    .auth-card__header h1,
+    .auth-card__header h4 {
+        font-size: 20px;
+    }
+    .auth-card__header .auth-icon {
+        font-size: 32px;
+    }
+    .auth-card__body {
+        padding: 22px 20px 18px;
+    }
+    .auth-card__body .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    .auth-btn {
+        padding: 11px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   ПЛАВНОЕ ПОЯВЛЕНИЕ ПОЛЕЙ ФОРМЫ (поочерёдно)
+   ========================================================= */
+.auth-card__body .mb-3 {
+    animation: authFadeUp 0.5s ease backwards;
+}
+.auth-card__body .mb-3:nth-child(1) { animation-delay: 0.05s; }
+.auth-card__body .mb-3:nth-child(2) { animation-delay: 0.10s; }
+.auth-card__body .mb-3:nth-child(3) { animation-delay: 0.15s; }
+.auth-card__body .mb-3:nth-child(4) { animation-delay: 0.20s; }
+.auth-card__body .mb-3:nth-child(5) { animation-delay: 0.25s; }
