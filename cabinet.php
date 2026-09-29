@@ -42,28 +42,28 @@ function statusBadge($status) {
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/slide1.jpg" class="d-block w-100" alt="Шикарный зал">
+            <img src="img/1.webp?v=2" class="d-block w-100" alt="Шикарный зал">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Шикарный зал</h5>
                 <p>Идеально для больших торжеств</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="img/slide2.jpg" class="d-block w-100" alt="Летняя веранда">
+            <img src="img/2.jpg?v=2" class="d-block w-100" alt="Летняя веранда">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Летняя веранда</h5>
                 <p>Свежий воздух и приятная атмосфера</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="img/slide3.jpg" class="d-block w-100" alt="Уютный ресторан">
+            <img src="img/3.jpg?v=2" class="d-block w-100" alt="Уютный ресторан">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Уютный ресторан</h5>
                 <p>Изысканная кухня и обслуживание</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="img/slide4.jpg" class="d-block w-100" alt="Закрытая веранда">
+            <img src="img/4.jpg?v=2" class="d-block w-100" alt="Закрытая веранда">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Закрытая веранда</h5>
                 <p>Уют на первом месте</p>
